@@ -10,11 +10,11 @@ struct Sierpinski {
 
 impl App for Sierpinski {
     fn update(&mut self, ctx: &egui::Context, _: &mut eframe::Frame) {
-        let mut rng = rand::thread_rng();
+        let mut rng = rand::rng();
 
         // generate 100 points per frame
         for _ in 0..100 {
-            let v = self.vertices[rng.gen_range(0..3)];
+            let v = self.vertices[rng.random_range(0..3)];
             self.current[0] = (self.current[0] + v[0]) / 2.0;
             self.current[1] = (self.current[1] + v[1]) / 2.0;
             self.points.push(self.current);
